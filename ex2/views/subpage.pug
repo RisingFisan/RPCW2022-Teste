@@ -1,0 +1,12 @@
+extends layout 
+
+block content
+  header.bg-slate-600.text-white.h-16
+    div.flex.items-center.px-8.py-2.h-full.justify-between
+      p.text-xl.font-bold CLAV
+      a(href="/" class="flex items-center hover:bg-slate-500").border-2.border-slate-200.rounded-full.px-3.py-1
+        svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
+          path(fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd")
+        p Voltar ao início
+  div.p-8
+    block subcontent

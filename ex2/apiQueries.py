@@ -1,0 +1,31 @@
+import requests
+import json
+
+print("Quantos processos (nível 3) e quais são (obtem uma lista em JSON; podes concatenar sublistas invocando várias queries), pertencentes à descendência da classe 750?")
+
+r1 = json.loads(requests.get("http://clav-api.di.uminho.pt/v2/classes/c750?tipo=subarvore&token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTRlY2VhNmI1ZDVjMjQ3NmNmMDhiMSIsImxldmVsIjozLjUsImVudGlkYWRlIjoiZW50X0EzRVMiLCJlbWFpbCI6InJwY3cyMDIyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDAxMjk0NiwiZXhwIjoxNjU0MDQxNzQ2fQ.fl33d4YWtTc5wNST45lV6AIvqtziFyZdP9ZtZApbUjR7vO6Y9SlQBNOnVtzhvPEAU7DEXX_1I-dHoBa4hmBaMQ3QJ7jsCWuUqsBkUj1JXHEneENe9Md3HTpP8dc1Obv18N2ch2UidubCBPDfI2F0dTiGgsFsnwdfYn3DemUVLg99hNcLV_wu6RaMLF2yE3n9JBrcAX0ei2O6TV72q9OCmfJaXI9WBnUa1jSvaayZv0H_Pjsmg-OiPfCnMvsiyB0EMEkSf4NRYtE9OBnzSX1cysWY19cR2emEsY_Yj31s81vIoP4wcz91CV2P9dG-nrvGtrMy0E2otzxdasQpixNA8g").content)
+
+a1 = [x for sublist in r1['filhos'] for x in sublist['filhos']]
+print(len(a1))
+print([x['codigo'] for x in a1])
+
+
+print("\nQuantas entidades estão catalogadas?")
+
+r2 = json.loads(requests.get("http://clav-api.di.uminho.pt/v2/entidades?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTRlY2VhNmI1ZDVjMjQ3NmNmMDhiMSIsImxldmVsIjozLjUsImVudGlkYWRlIjoiZW50X0EzRVMiLCJlbWFpbCI6InJwY3cyMDIyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDAxMjk0NiwiZXhwIjoxNjU0MDQxNzQ2fQ.fl33d4YWtTc5wNST45lV6AIvqtziFyZdP9ZtZApbUjR7vO6Y9SlQBNOnVtzhvPEAU7DEXX_1I-dHoBa4hmBaMQ3QJ7jsCWuUqsBkUj1JXHEneENe9Md3HTpP8dc1Obv18N2ch2UidubCBPDfI2F0dTiGgsFsnwdfYn3DemUVLg99hNcLV_wu6RaMLF2yE3n9JBrcAX0ei2O6TV72q9OCmfJaXI9WBnUa1jSvaayZv0H_Pjsmg-OiPfCnMvsiyB0EMEkSf4NRYtE9OBnzSX1cysWY19cR2emEsY_Yj31s81vIoP4wcz91CV2P9dG-nrvGtrMy0E2otzxdasQpixNA8g").content)
+
+print(len(r2))
+
+
+print("\nQuantos processos (classes de nível 3) se encontram na descendência de 750.20?")
+
+r3 = json.loads(requests.get("http://clav-api.di.uminho.pt/v2/classes/c750.20/descendencia?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTRlY2VhNmI1ZDVjMjQ3NmNmMDhiMSIsImxldmVsIjozLjUsImVudGlkYWRlIjoiZW50X0EzRVMiLCJlbWFpbCI6InJwY3cyMDIyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDAxMjk0NiwiZXhwIjoxNjU0MDQxNzQ2fQ.fl33d4YWtTc5wNST45lV6AIvqtziFyZdP9ZtZApbUjR7vO6Y9SlQBNOnVtzhvPEAU7DEXX_1I-dHoBa4hmBaMQ3QJ7jsCWuUqsBkUj1JXHEneENe9Md3HTpP8dc1Obv18N2ch2UidubCBPDfI2F0dTiGgsFsnwdfYn3DemUVLg99hNcLV_wu6RaMLF2yE3n9JBrcAX0ei2O6TV72q9OCmfJaXI9WBnUa1jSvaayZv0H_Pjsmg-OiPfCnMvsiyB0EMEkSf4NRYtE9OBnzSX1cysWY19cR2emEsY_Yj31s81vIoP4wcz91CV2P9dG-nrvGtrMy0E2otzxdasQpixNA8g").content)
+
+print(len(r3))
+
+
+print("\nQuantos processos (classes de nível 3) estão relacionados com 750.20.600?")
+
+r4 = json.loads(requests.get("http://clav-api.di.uminho.pt/v2/classes/c750.20.600?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTRlY2VhNmI1ZDVjMjQ3NmNmMDhiMSIsImxldmVsIjozLjUsImVudGlkYWRlIjoiZW50X0EzRVMiLCJlbWFpbCI6InJwY3cyMDIyQGdtYWlsLmNvbSIsImlhdCI6MTY1NDAxMjk0NiwiZXhwIjoxNjU0MDQxNzQ2fQ.fl33d4YWtTc5wNST45lV6AIvqtziFyZdP9ZtZApbUjR7vO6Y9SlQBNOnVtzhvPEAU7DEXX_1I-dHoBa4hmBaMQ3QJ7jsCWuUqsBkUj1JXHEneENe9Md3HTpP8dc1Obv18N2ch2UidubCBPDfI2F0dTiGgsFsnwdfYn3DemUVLg99hNcLV_wu6RaMLF2yE3n9JBrcAX0ei2O6TV72q9OCmfJaXI9WBnUa1jSvaayZv0H_Pjsmg-OiPfCnMvsiyB0EMEkSf4NRYtE9OBnzSX1cysWY19cR2emEsY_Yj31s81vIoP4wcz91CV2P9dG-nrvGtrMy0E2otzxdasQpixNA8g").content)
+
+print(len(r4['processosRelacionados']))

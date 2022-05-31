@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>RPCW2022-Teste</titulo>
+        <data>2022-05-31</data>
+        <autor>
+            <id>A89615</id>
+            <nome>Sofia Santos</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW2022</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <h1>Exercício 1</h1>
+            <h2>Alínea 1</h2>
+                <p>Nesta alínea, como o ficheiro JSON não continha nenhum erro de sintaxe, não foi necessário efetuar nenhuma correção ao mesmo.</p>
+                <p>Contudo, como este ficheiro será importado para o MongoDB, que utiliza o nome "_id" para o ID de cada objeto, alterei o nome do campo "id" do ficheiro JSON para "_id", facilitando a importação do mesmo.</p>
+                <p>Para além disso, o ficheiro JSON contém dois tipos de estruturas diferentes, cidades e ligações. Para facilitar a importação, criei dois ficheiros JSON, um que apenas contém as cidades - <xref>
+                    <url>ex1/cidades.json</url>
+                    <texto>cidades.json</texto>
+                </xref> - e outro que apenas contém as ligações - <xref>
+                    <url>ex1/ligacoes.json</url>
+                    <texto>ligacoes.json</texto>
+                </xref>.</p>
+                <p>Para estas duas tarefas, usei um pequeno <xref>
+                    <url>ex1/dataCleansing.py</url>
+                    <texto>script</texto>
+                </xref> escrito por mim em Python.</p>
+            <h2>Alínea 2</h2>
+                <p>Para esta alínea, simplesmente usei o comando <code>mongoimport</code> para importar os dois ficheiros JSON criados na primeira alínea, através dos seguintes comandos:</p>
+                <ul>
+                    <li><code>mongoimport --db MAPA2022 --collection cidades --file .\cidades.json --jsonArray</code></li>
+                    <li><code>mongoimport --db MAPA2022 --collection ligacoes --file .\ligacoes.json --jsonArray</code></li>
+                </ul>
+                <p>Como o comando cria automaticamente uma base de dados com o nome fornecido, não precisei de me preocupar com a criação da mesma.</p>
+            <h2>Alínea 3</h2>
+                <p>Nesta alínea, desenvolvi uma API de dados, recorrendo ao módulo Express do NodeJS. A ligação à base de dados é feita usando o módulo mongoose.</p>
+                <p>Para correr esta API, basta executar o comando <code>npm start</code> e o servidor passará a correr na porta 3000.</p>
+        <h1>Exercício 2</h1>
+            <h2>Alínea 1</h2>
+                <ul>
+                    <li>
+                        <p>Quantos processos (nível 3) e quais são (obtem uma lista em JSON; podes concatenar sublistas invocando várias queries), pertencentes à descendência da classe 750?</p>
+                        <p>Resposta: 18 processos - [750.10.001, 750.10.002, 750.10.300, 750.10.600, 750.10.601, 750.10.602, 750.20.001, 750.20.002, 750.20.003, 750.20.300, 750.20.301, 750.20.600, 750.20.601, 750.30.001, 750.30.300, 750.30.600, 750.30.601, 750.30.602]</p>
+                    </li>
+                    <li>
+                        <p>Quantas entidades estão catalogadas?</p>
+                        <p>Resposta: 647</p>
+                    </li>
+                    <li>
+                        <p>Quantos processos (classes de nível 3) se encontram na descendência de 750.20?</p>
+                        <p>Resposta: 7</p>
+                    </li>
+                    <li>
+                        <p>Quantos processos (classes de nível 3) estão relacionados com 750.20.600?</p>
+                        <p>Resposta: 24</p>
+                    </li>
+                </ul>
+                <p>Para responder a estas questões, usei um <xref>
+                    <url>ex2/apiQueries.py</url>
+                    <texto>script</texto>
+                </xref> em Python desenvolvido por mim. Como o Postman apenas devolve a resposta em formato JSON, sem forma de a manipular, decidi responder a esta alínea de outra forma, para evitar perder muito tempo a contar valores à mão.</p>
+            <h2>Alínea 2</h2>
+                <p>Para esta alínea, foi desenvolvido um servidor web com o módulo Express do NodeJS.</p>
+                <p>Para fazer os pedidos à API do CLAV, é usado o módulo axios.</p>
+                <p>O token de autorização é obtido quando o utilizador se liga ao servidor pela primeira vez, sendo posteriormente armazenado nas cookies do browser, para evitar realizar o mesmo pedido várias vezes de forma redundante.</p>
+                <p>Esta aplicação usa Tailwind para o CSS, como tal, é necessário compilar o CSS antes de correr o servidor. Para tal, basta correr o comando <code>npm run build:css</code></p>
+                <p>Depois deste passo, basta correr o comando <code>npm start</code> para iniciar o servidor na porta 3000.</p>
+    </resumo>
+</doc>

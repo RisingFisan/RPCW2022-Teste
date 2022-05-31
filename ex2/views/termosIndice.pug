@@ -1,0 +1,17 @@
+extends subpage
+
+block subcontent
+  h1.font-bold.text-3xl Termos de Índice
+  div.pt-8
+    table.border-collapse
+      tr.border-2.border-slate-600.bg-slate-500.text-white
+        th.border-2.border-slate-600 Termo
+        th.border-2.border-slate-600 ID da Classe
+        th.border-2.border-slate-600 Título da Classe
+      each termInd in termosIndice
+        tr.border-2.border-slate-600
+          td.border-2.border-slate-600= termInd.termo
+          td.border-2.border-slate-600.bg-slate-200
+            a(href="/classes/" + termInd.idClasse class="block w-full")= termInd.idClasse
+          td.border-2.border-slate-600.bg-slate-200.h-full
+            a(href="/classes/" + termInd.idClasse class="block w-full")= termInd.tituloClasse
